@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { Image, Text } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-const Welcome = () => {
+const Splash = () => {
   const router = useRouter();
 
   useEffect(() => {
@@ -31,4 +31,4 @@ const Welcome = () => {
   );
 };
 
-export default Welcome;
+export default Splash;
