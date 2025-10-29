@@ -1,6 +1,7 @@
 import CustomButton from "@/components/CustomButton";
 import Images from "@/constants/images";
 import { LinearGradient } from "expo-linear-gradient";
+import { router } from "expo-router";
 import React from "react";
 import { ImageBackground, Text, TouchableOpacity, View } from "react-native";
 
@@ -53,7 +54,7 @@ const WelcomeScreen = () => {
           <View className="h-4" />
           <CustomButton
             title="LOGIN"
-            onPress={() => {}}
+            onPress={() => router.push("/login")}
             backgroundColor="bg-black"
             textColor="text-white"
             containerStyle="border border-white"
