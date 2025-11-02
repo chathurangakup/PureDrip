@@ -1,15 +1,17 @@
 {
   "expo": {
-    "name": "PureDrip",
+    "name": "Pure Drip",
     "slug": "PureDrip",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "scheme": "puredrip",
     "userInterfaceStyle": "automatic",
+  
     "newArchEnabled": true,
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.anonymous.PureDrip"
     },
     "android": {
       "adaptiveIcon": {
@@ -23,17 +25,22 @@
     },
     "web": {
       "output": "static",
-      "favicon": "./assets/images/favicon.png"
+      "favicon": "./assets/images/favicon.png",
+      "bundler": "metro"
     },
     "plugins": [
       "expo-router",
       [
         "expo-splash-screen",
         {
-          "image": "./assets/images/splash-icon.png",
+         
           "imageWidth": 200,
           "resizeMode": "contain",
-          "backgroundColor": "#ffffff",
+        
+          "images": {
+            "light": "./assets/images/splash-icon.png",
+            "dark": "./assets/images/splash-dark.png"
+          },
           "dark": {
             "backgroundColor": "#000000"
           }
