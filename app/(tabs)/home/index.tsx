@@ -3,8 +3,9 @@ import SearchBar from "@/components/SearchBox";
 import WaterTile from "@/components/WaterTile";
 import WaterTypeSelector from "@/components/WaterTypeSelector";
 import { useWater } from "@/context/WaterContext";
+import { router } from "expo-router";
 import React, { useState } from "react";
-import { FlatList, StatusBar, Text, View } from "react-native";
+import { FlatList, StatusBar, Text, TouchableOpacity, View } from "react-native";
 
 const Home = () => {
   const { waterItems, loading } = useWater();
@@ -12,6 +13,23 @@ const Home = () => {
   if (loading) return <Text>Loading...</Text>;
 
   const [selectedType, setSelectedType] = useState("All");
+
+  const handleItemPress = (item: any) => {
+    console.log("Pressed item:", item.imageKey);
+    router.push({
+      pathname: "/(tabs)/home/product",
+      params: {
+        id: item.id,
+        name: item.name,
+        price: item.price,
+        description: item.description,
+        image: item.imageKey,
+        rating: item.rating,
+        ratingCount: item.ratingCount,
+        isAvailable: item.isAvailable,
+      },
+    });
+  };
 
   const filteredData =
     selectedType === "All" ? waterItems : waterItems.filter((item) => item.type === selectedType);
@@ -34,7 +52,16 @@ const Home = () => {
         keyExtractor={(item) => item.id}
         numColumns={2}
         renderItem={({ item }) => (
-          <WaterTile name={item.name} price={item.price} image={item.image} />
+          <TouchableOpacity
+            onPress={() => handleItemPress(item)}
+            activeOpacity={0.8}
+            style={{
+              flex: 1,
+              margin: 5, // spacing between tiles
+            }}
+          >
+            <WaterTile name={item.name} price={item.price} image={item.imageKey} />
+          </TouchableOpacity>
         )}
         contentContainerStyle={{ paddingRight: 15, paddingLeft: 10 }}
         showsVerticalScrollIndicator={false}

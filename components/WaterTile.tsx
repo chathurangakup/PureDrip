@@ -1,3 +1,4 @@
+import Images from "@/constants/images";
 import { AntDesign } from "@expo/vector-icons";
 import React, { useState } from "react";
 import { Image, Text, TouchableOpacity, View } from "react-native";
@@ -14,7 +15,7 @@ const WaterTile: React.FC<WaterTileProps> = ({ name, price, image }) => {
   const [liked, setLiked] = useState(false);
 
   // Convert string URLs to the required ImageSourcePropType { uri: string }
-  const imageSource = typeof image === "string" ? { uri: image } : image;
+  const imageSource = Images[image as keyof typeof Images];
 
   return (
     <View className="flex-1 m-2 bg-white rounded-lg overflow-hidden shadow">
