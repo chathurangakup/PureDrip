@@ -6,7 +6,7 @@ import { WaterContextType, WaterItem } from "../types/water.d";
 const WaterContext = createContext<WaterContextType>({
   waterItems: [],
   loading: true,
-  fetchWaterItems: () => {},
+  fetchWaterItems: async () => {},
 });
 
 export const useWater = () => useContext(WaterContext);
